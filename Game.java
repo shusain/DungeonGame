@@ -59,6 +59,18 @@ public class Game {
         System.out.println("-------------------------------------------------------------------------------");
     }
 
+    public void likeToDo() {
+        System.out.println("# What would you like to do? #");
+    }
+
+    public void playerInfo() {
+        lineBreak();
+        System.out.println("Your name: " + playerName);
+        System.out.println("Your hitpoints: " + playerHealth);
+        System.out.println("Your weapon: " + playerWeapon);
+        lineBreak();
+    }
+
     public static void main(String[] args) {
 
         Game dungeon;
@@ -74,40 +86,34 @@ public class Game {
         playerAttackDamage = 30;
         playerWeapon = "Iron Sword";
 
-        System.out.println("Your hitpoints: " + playerHealth);
-        System.out.println("Your weapon: " + playerWeapon);
-
         System.out.println("Please enter your name:");
 
         playerName = myScanner.nextLine();
 
         System.out.println("Welcome to the Dungeon " + playerName + " !");
+
+        playerInfo();
     }
 
     public void corridor() {
 
         System.out.println(
                 "\nYou find yourself in a dimly lit corridor. The only light seems to be radiating from the stairs you came down.");
-        System.out.println("-------------------------------------------------------------------------------");
         System.out.println(
-                "Your eyes slowly adjust to the din, you spot some tree roots, leaves, and dirt. Mostly debris that has blown in from the stairs behind you.");
-        System.out.println("-------------------------------------------------------------------------------");
+                "\nYour eyes slowly adjust to the din, you spot some tree roots, leaves, and dirt. Mostly debris that has blown in from the stairs behind you.");
         System.out.println(
-                "You shuffle forward apprehensively and notice some of the mud is still damp and clumped together. Someone has come this way recently.");
-        System.out.println("-------------------------------------------------------------------------------");
+                "\nYou shuffle forward apprehensively and notice some of the mud is still damp and clumped together. Someone has come this way recently.");
         System.out.println(
-                "A cold shudder comes over you. You make a mental note of your packs contents, and remind yourself of your equipment.");
-        System.out.println("-------------------------------------------------------------------------------");
+                "\nA cold shudder comes over you. You make a mental note of your packs contents, and remind yourself of your equipment.");
         System.out.println(
-                "You have your Iron Chainmail, your weak Iron Ring. You can feel some radiance from it, but you know it wont do much. And in your pack there are three healing potions.");
+                "\nYou have your Iron Chainmail, your weak Iron Ring. You can feel some radiance from it, but you know it wont do much. And in your pack there are three healing potions.");
         System.out.println("Your trusty Iron Sword is on your hip. This fills you with a little confidence.");
-        System.out.println("-------------------------------------------------------------------------------");
-        System.out.println("What would you like to do?");
-        System.out.println("-------------------------------------------------------------------------------");
+        lineBreak();
+        likeToDo();
+        lineBreak();
         System.out.println("1. Push onward into the next room.");
         System.out.println("2. Have a nap.");
-        System.out.println("-------------------------------------------------------------------------------");
-
+        lineBreak();
         choice = myScanner.nextInt();
 
         switch (choice) {
@@ -118,21 +124,20 @@ public class Game {
             backCorridor();
             break;
         default:
-            System.out.println("You need to pick 1, or 2.");
+            System.out.println("\n# You need to pick 1, or 2. #");
         }
     }
 
     public void backCorridor() {
 
-        System.out.println("You find yourself back at the corridor you entered from.");
-        System.out.println("You arent going to uncover any mysteries hanging around here.");
-        System.out.println("-------------------------------------------------------------------------------");
-        System.out.println("What would you like to do?");
-        System.out.println("-------------------------------------------------------------------------------");
+        lineBreak();
+        System.out.println("\nYou find yourself back at the corridor you entered from.");
+        System.out.println("\nYou arent going to uncover any mysteries hanging around here.");
+        lineBreak();
+        likeToDo();
         System.out.println("1. Push onward into the next room.");
         System.out.println("2. Have a nap.");
-        System.out.println("-------------------------------------------------------------------------------");
-
+        lineBreak();
         choice = myScanner.nextInt();
 
         switch (choice) {
@@ -148,20 +153,20 @@ public class Game {
     }
 
     public void roomOne() {
-        System.out.println("You inch into the room north of you.");
+        lineBreak();
+        System.out.println("\nYou inch into the room north of you.");
         System.out.println(
-                "A weird, sweet, and musty smell seems to cling to the inside of your nostrils. Whatever it is smells bad, but you cant stop wondering what it is.");
-        System.out.println("You squint to see into the room and spot a cage and a table");
-        System.out.println("There's also a wooden door on the east wall.");
-        System.out.println("-------------------------------------------------------------------------------");
-        System.out.println("What would you like to do?");
-        System.out.println("-------------------------------------------------------------------------------");
+                "\nA weird, sweet, and musty smell seems to cling to the inside of your nostrils. Whatever it is smells bad, but you cant stop wondering what it is.");
+        System.out.println("\nYou squint to see into the room and spot a cage and a table");
+        System.out.println("\nThere's also a wooden door on the east wall.");
+        lineBreak();
+        likeToDo();
+        lineBreak();
         System.out.println("1. Check out the cage.");
         System.out.println("2. Investigate the table.");
         System.out.println("3. Push east through the wooden door.");
         System.out.println("4. Go back to the corridor.");
-        System.out.println("-------------------------------------------------------------------------------");
-
+        lineBreak();
         choice = myScanner.nextInt();
 
         switch (choice) {
@@ -170,25 +175,40 @@ public class Game {
             if (roomOneCage == 1) {
                 System.out.println("Your curiosity gets the better of you and you investigate the cage.");
                 System.out.println(
-                    "Oh okay. You glance down and see something slimy and decomposing. You know where the smell is coming from");
+                        "Oh okay. You glance down and see something slimy and decomposing. You know where the smell is coming from");
                 System.out.println("Something catches the light, and it doesnt look wet.");
                 System.out.println("You've found a healing potion! You add it to your pouch");
 
                 numHealthPotions++;
-                roomOneCage--;
+                roomOneCage = 0;
                 lineBreak();
+                break;
 
             } else {
                 System.out.println("You've already investigated that. You're not sure if your nose can take any more.");
+                lineBreak();
+                break;
             }
-            roomOne();
+
         case 2:
-            //roomOneTable();
-            System.out.println("Your curiosity takes you to the table, there's a small pouch hanging from the back of one of the chairs.");
-            System.out.println("");
+            // roomOne - Investigate the table
+            if (roomOneTable == 1) {
+                System.out.println(
+                        "Your curiosity takes you to the table, there's a small pouch hanging from the back of one of the chairs.");
+                System.out.println(
+                        "You give the pouch a tentative squeeze. You're sure there's nothing nasty lurking in there.");
+                System.out.println(
+                        "Inside the pouch there are just two loose pieces of parchment. There's nothing remarkable about them.");
+                lineBreak();
+                roomOneTable = 0;
+
+            } else {
+                System.out.println("You've already checked the table.");
+            }
+
             break;
         case 3:
-            //roomTwo();
+            // roomTwo();
             break;
         case 4:
             backCorridor();

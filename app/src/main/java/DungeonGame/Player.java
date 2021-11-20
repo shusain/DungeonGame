@@ -84,6 +84,11 @@ public class Player {
     }
 
     public void fight(ArrayList<Enemy> enemies) {
+	// During fight we should:
+        // Print out the enemies in the fight
+        // Prompt the user to attack an enemy or use an item
+        // If attacking an enemy should ask which one
+        // If using an item should ask which one
         for (int i = 0; i < enemies.size(); i++) {
             Enemy curEnemy = enemies.get(i);
             this.health -= curEnemy.enemyAttackDamage;

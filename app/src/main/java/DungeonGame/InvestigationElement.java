@@ -1,3 +1,4 @@
+package DungeonGame;
 import java.util.ArrayList;
 
 public class InvestigationElement {

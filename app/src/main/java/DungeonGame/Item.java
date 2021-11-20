@@ -1,3 +1,4 @@
+package DungeonGame;
 public class Item {
     String name;
     int power;    

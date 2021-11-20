@@ -11,6 +11,26 @@ To run it compile then execute the java program
 
 ## Prerequisites
 
+### Development
+`sudo apt install openjdk-17-jdk -Y`
+
+#### Building
+on Windows
+`./gradlew.bat build`
+or on Mac/Linux
+`./gradlew build`
+#### Testing
+on Windows
+`./gradlew.bat test`
+or on Mac/Linux
+`./gradlew test`
+#### Running (without extra gradle output)
+
+on Windows
+`./gradlew.bat run --console=plain`
+or on Mac/Linux
+`./gradlew run --console=plain`
+
 Assumes have JDK 9+
 
 `sudo apt install openjdk-17-jdk -Y`

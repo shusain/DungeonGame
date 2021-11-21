@@ -21,9 +21,9 @@ or on Mac/Linux
 `./gradlew build`
 #### Testing
 on Windows
-`./gradlew.bat test`
+`./gradlew.bat cleanTest test`
 or on Mac/Linux
-`./gradlew test`
+`./gradlew cleanTest test`
 #### Running (without extra gradle output)
 
 on Windows

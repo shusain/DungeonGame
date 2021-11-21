@@ -39,7 +39,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'DungeonGame.App'
+    mainClass = 'DungeonGame.Game'
 }
 run {
     standardInput = System.in

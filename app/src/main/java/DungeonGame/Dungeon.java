@@ -25,12 +25,20 @@ public class Dungeon {
 
     // Constructing the dungeon
     Dungeon() {
+	// Create the player get their name
         this.makePlayer();
+
+	// Start making game tiles to put together a map
+	GameTile passageWay = new GameTile("You enter the passage it is narrow and long", "passage");
+
         corridor = this.makeCorridor();
+	GameTile roomOne = makeRoomOne();
+	roomOne.nearbyTiles.add(corridor);
+	roomOne.nearbyTiles.add(passageWay);
 
         corridor.nearbyTiles = new ArrayList<>(){{
             add(corridor);
-            add(makeRoomOne());
+            add(roomOne);
         }};
 
         // Sets up the current tile for the player which

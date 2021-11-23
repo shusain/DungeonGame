@@ -1,4 +1,5 @@
 package DungeonGame;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -17,20 +18,14 @@ public class Player {
     GameTile currentTile;
 
     Player() {
-        this ("Bob", 100, 15, 30, 99, "Iron Sword");
+        this("Bob", 100, 15, 30, 99, "Iron Sword");
     }
 
     Player(String name) {
-        this (name, 100, 15, 30, 99, "Iron Sword");
+        this(name, 100, 15, 30, 99, "Iron Sword");
     }
 
-    Player(
-        String name,
-        int health,
-        int armor,
-        int attackDamage,
-        int maxPlayerAttackDamage,
-        String weapon) {
+    Player(String name, int health, int armor, int attackDamage, int maxPlayerAttackDamage, String weapon) {
         this.name = name;
         this.health = health;
         this.armor = armor;
@@ -41,16 +36,12 @@ public class Player {
 
     public String toString() {
         return String.join("\n",
-            Dungeon.LINE_BREAK,
-            "Your name: " + this.name,
-            "Your health: " + this.health,
-            "Your armor: " + this.armor,
-            "Your attackDamage: " + this.attackDamage,
-            "Your maxPlayerAttackDamage: " + this.maxPlayerAttackDamage,
-            "Your weapon: " + this.weapon,
-            "Your items: " + this.items,
-            Dungeon.LINE_BREAK
-        );
+                Dungeon.LINE_BREAK,
+                "Your name: " + this.name, "Your health: " + this.health,
+                "Your armor: " + this.armor, "Your attackDamage: " + this.attackDamage,
+                "Your maxPlayerAttackDamage: " + this.maxPlayerAttackDamage, "Your weapon: " + this.weapon,
+                "Your items: " + this.items,
+                Dungeon.LINE_BREAK);
     }
 
     // Player movement
@@ -73,18 +64,18 @@ public class Player {
     public boolean isAlive() {
         return this.health > 0;
     }
-    
-    public void takeAction(int choice){
+
+    public void takeAction(int choice) {
         // Check if the option was valid
         boolean isOptionValid = this.currentTile.checkIsOptionValid(choice);
         System.out.println(isOptionValid ? "Valid Option" : "Invalid option");
-        if(isOptionValid) {
+        if (isOptionValid) {
             this.currentTile.takeAction(this, choice);
         }
     }
 
     public void fight(ArrayList<Enemy> enemies) {
-	// During fight we should:
+        // During fight we should:
         // Print out the enemies in the fight
         // Prompt the user to attack an enemy or use an item
         // If attacking an enemy should ask which one
@@ -93,7 +84,7 @@ public class Player {
             Enemy curEnemy = enemies.get(i);
             this.health -= curEnemy.enemyAttackDamage;
             curEnemy.maxEnemyHealth -= this.attackDamage;
-            if(curEnemy.health < 0)
+            if (curEnemy.health < 0)
                 enemies.remove(curEnemy);
         }
     }

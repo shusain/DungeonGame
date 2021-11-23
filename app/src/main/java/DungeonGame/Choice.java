@@ -1,4 +1,5 @@
 package DungeonGame;
+
 public class Choice {
     String displayString;
     String actionResponse;

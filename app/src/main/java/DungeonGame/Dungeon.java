@@ -17,8 +17,8 @@ public class Dungeon {
                     "You find yourself back at the corridor you entered from.",
                     "You arent going to uncover any mysteries hanging around here."));
 
-    // Constructing the dungeon
     Dungeon() {
+        
         // Create the player get their name
         this.makePlayer();
 
@@ -37,6 +37,9 @@ public class Dungeon {
             }
         };
 
+    }
+
+    public void readyPlayerOne() {
         // Sets up the current tile for the player which
         // player actions will move them from here to other tiles nearby
         corridor.playerEntersTile(player);
@@ -59,7 +62,7 @@ public class Dungeon {
         String playerName = dungI.getName();
         player = new Player(playerName);
 
-        System.out.println("Welcome to the Dungeon " + playerName + " !");
+        System.out.printf("Welcome to the Dungeon %s !\n", playerName);
     }
 
     public GameTile makeCorridor() {

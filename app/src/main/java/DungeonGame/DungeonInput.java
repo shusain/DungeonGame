@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class DungeonInput {
     private static DungeonInput instance = null;
 
-    Scanner consoleInput = new Scanner(System.in);
+    Scanner consoleInput;
 
     private DungeonInput() {
+        consoleInput = new Scanner(System.in);
     }
 
     public static DungeonInput getInstance() {

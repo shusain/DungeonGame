@@ -1,13 +1,11 @@
 package DungeonGame;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Dungeon {
     public static String WHAT_LIKE_TO_DO = "# What would you like to do? #";
     public static String LINE_BREAK = "-------------------------------------------------------------------------------";
-
-    Scanner myScanner = new Scanner(System.in);
+    DungeonInput dungI = DungeonInput.getInstance();
 
     Player player;
 
@@ -50,24 +48,18 @@ public class Dungeon {
             System.out.println(player.currentTile.getOptionsList());
 
             // Wait for user
-            int choice = myScanner.nextInt();
+            int choice = dungI.getInt();
 
             // Use the choice to take an action with the user
             player.takeAction(choice);
-
-            // Print player stats after the action
-            System.out.println(player);
         }
     }
 
     public void makePlayer() {
-        System.out.println("Please enter your name:");
-
-        String playerName = myScanner.nextLine();
+        String playerName = dungI.getName();
         player = new Player(playerName);
 
         System.out.println("Welcome to the Dungeon " + playerName + " !");
-        System.out.println(player);
     }
 
     public GameTile makeCorridor() {
@@ -115,7 +107,10 @@ public class Dungeon {
         InvestigationElement anElement = new InvestigationElement("cage", searchText,
                 "You've already investigated that. You're not sure if your nose can take any more.", new ArrayList<>() {
                     {
-                        add(new Item("potion", 40));
+                        Item potion = new Item("potion", ItemTypeEnum.Potion);
+                        potion.setShieldingStrength(20);
+                        potion.setSingleUse(true);
+                        add(potion);
                     }
                 });
 
@@ -130,6 +125,9 @@ public class Dungeon {
 
         InvestigationElement theTable = new InvestigationElement("table", searchText, (ArrayList<Item>) null);
 
+        Enemy anEnemy = new Enemy();
+
+        theTable.setEnemies(new ArrayList<Enemy>(){{add(anEnemy);}});
         return theTable;
     }
 }

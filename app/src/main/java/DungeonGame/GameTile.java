@@ -49,7 +49,7 @@ public class GameTile {
             String investigationWord = list[r.nextInt(list.length)];
 
             toReturn += String.format("%d: %s ", listCount, investigationWord);
-            toReturn += this.roomElements.get(i).elementName + "\n";
+            toReturn += this.roomElements.get(i).getElementName() + "\n";
         }
         return toReturn;
     }
@@ -59,7 +59,9 @@ public class GameTile {
     }
 
     public void takeAction(Player player, int choice) {
-        if (choice <= this.choices.size()) {
+        if(choice == 0) {
+            System.out.println(player);
+        } else if (choice <= this.choices.size()) {
             System.out.println(this.choices.get(choice - 1).actionResponse);
         } else if (choice <= this.choices.size() + this.nearbyTiles.size()) {
             player.stepOnTile(this.nearbyTiles.get(choice - this.choices.size() - 1));

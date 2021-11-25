@@ -2,13 +2,16 @@ package DungeonGame;
 
 import java.util.ArrayList;
 
+import lombok.Data;
+
+@Data
 public class InvestigationElement {
-    ArrayList<Enemy> enemies;
-    ArrayList<Item> items;
-    String elementName;
-    boolean hasBeenChecked = false;
-    String alreadyBeenSearchedMsg;
-    String searchText;
+    private ArrayList<Enemy> enemies;
+    private ArrayList<Item> items;
+    private String elementName;
+    private boolean hasBeenChecked = false;
+    private String alreadyBeenSearchedMsg;
+    private String searchText;
 
     InvestigationElement(String elementName, String searchText, ArrayList<Item> items) {
         this.elementName = elementName;
@@ -32,7 +35,7 @@ public class InvestigationElement {
         System.out.println(this.hasBeenChecked ? this.alreadyBeenSearchedMsg : searchText);
         if (!this.hasBeenChecked) {
             if (this.items != null && this.items.size() > 0) {
-                player.items.addAll(this.items);
+                player.getItems().addAll(this.items);
             }
             if (this.enemies != null && this.enemies.size() > 0) {
                 player.fight(this.enemies);

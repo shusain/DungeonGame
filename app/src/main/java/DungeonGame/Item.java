@@ -1,16 +1,21 @@
 package DungeonGame;
 
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@RequiredArgsConstructor
 public class Item {
-    String name;
-    int power;
+    @NonNull
+    private String name;
+    private int attackStrength;
+    private int shieldingStrength;
+    private int itemHealth;
 
-    Item(String name, int power) {
-        this.name = name;
-        this.power = power;
-    }
+    @NonNull
+    private ItemTypeEnum type;
 
-    @Override
-    public String toString() {
-        return name + ":" + Integer.toString(power);
-    }
+    private boolean equipped;
+    private boolean singleUse;
 }
